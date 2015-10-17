@@ -5,7 +5,7 @@ require 'ext_ipaddr/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "ext_ipaddr"
-  spec.version       = ExtIpaddr::VERSION
+  spec.version       = ExtIPAddr::VERSION
   spec.authors       = ["Shu Sugimoto"]
   spec.email         = ["shu@su.gimo.to"]
 

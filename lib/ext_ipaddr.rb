@@ -1,5 +1,5 @@
 require "ext_ipaddr/version"
 
-module ExtIpaddr
+module ExtIPAddr
   # Your code goes here...
 end
