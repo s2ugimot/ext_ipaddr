@@ -8,6 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = ExtIPAddr::VERSION
   spec.authors       = ["Shu Sugimoto"]
   spec.email         = ["shu@su.gimo.to"]
+  spec.licenses      = ['MIT']
 
   spec.summary       = %q{Monkey patch for built-in IPAddr class: CIDR support}
   spec.description   = %q{Monkey patch for built-in IPAddr class: CIDR support}
