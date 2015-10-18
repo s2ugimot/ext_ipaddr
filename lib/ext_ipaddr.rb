@@ -29,7 +29,7 @@ IPAddr.class_eval do
     IPAddr.new(@mask_addr, @family)
   end
 
-  def prefix
+  def prefix_length
     begin_addr = (@addr & @mask_addr)
 
     case @family
@@ -45,7 +45,7 @@ IPAddr.class_eval do
   end
 
   def to_cidr_s
-    return to_s + "/#{prefix}"
+    return to_s + "/#{prefix_length}"
   end
 
   def ==(other)

@@ -27,9 +27,9 @@ describe ExtIPAddr do
     end
 
     it 'returns proper prefix' do
-      expect(IPAddr.new('192.0.2.1/0').prefix).to  eq(0)
-      expect(IPAddr.new('192.0.2.1/24').prefix).to eq(24)
-      expect(IPAddr.new('192.0.2.1/32').prefix).to eq(32)
+      expect(IPAddr.new('192.0.2.1/0').prefix_length).to  eq(0)
+      expect(IPAddr.new('192.0.2.1/24').prefix_length).to eq(24)
+      expect(IPAddr.new('192.0.2.1/32').prefix_length).to eq(32)
     end
 
     it 'overrides == properly' do
@@ -61,9 +61,9 @@ describe ExtIPAddr do
     end
 
     it 'returns proper prefix' do
-      expect(IPAddr.new('2001:db8::1/0').prefix).to   eq(0)
-      expect(IPAddr.new('2001:db8::1/48').prefix).to  eq(48)
-      expect(IPAddr.new('2001:db8::1/128').prefix).to eq(128)
+      expect(IPAddr.new('2001:db8::1/0').prefix_length).to   eq(0)
+      expect(IPAddr.new('2001:db8::1/48').prefix_length).to  eq(48)
+      expect(IPAddr.new('2001:db8::1/128').prefix_length).to eq(128)
     end
 
     it 'overrides == properly' do
