@@ -1,5 +1,6 @@
 # ExtIPAddr
 
+[![Gem Version](https://badge.fury.io/rb/ext_ipaddr.svg)](https://badge.fury.io/rb/ext_ipaddr)
 [![Build Status](https://travis-ci.org/s2ugimot/ext_ipaddr.svg?branch=master)](https://travis-ci.org/s2ugimot/ext_ipaddr)
 
 Monkey patch for ruby built-in IPAddr class to make it support CIDR notation.
