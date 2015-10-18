@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.email         = ["shu@su.gimo.to"]
   spec.licenses      = ['MIT']
 
-  spec.summary       = %q{Monkey patch for built-in IPAddr class: CIDR support}
-  spec.description   = %q{Monkey patch for built-in IPAddr class: CIDR support}
+  spec.summary       = %q{Monkey patch for ruby built-in IPAddr class to make it support CIDR notation}
+  spec.description   = %q{Monkey patch for ruby built-in IPAddr class to make it support CIDR notation}
   spec.homepage      = "https://github.com/s2ugimot/ext_ipaddr"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }

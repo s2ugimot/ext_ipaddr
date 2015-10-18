@@ -1,8 +1,24 @@
 # ExtIPAddr
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/ext_ipaddr`. To experiment with that code, run `bin/console` for an interactive prompt.
+Monkey patch for ruby built-in IPAddr class to make it support CIDR notation.
 
-TODO: Delete this and the text above, and describe your gem
+```ruby
+IPAddr.new('192.0.2.1/24')
+# => #<IPAddr: IPv4:192.0.2.1/255.255.255.0>
+
+IPAddr.new('2001:db8::1/64')
+# => #<IPAddr: IPv6:2001:0db8:0000:0000:0000:0000:0000:0001/ffff:ffff:ffff:ffff:0000:0000:0000:0000>
+```
+
+
+## Why we need this?
+
+This gem is intended to use with ActiveRecord and PostgreSQL.
+With this gem installed, you can store IP address with prefix length information (e.g. "192.0.2.1/24", "2001:db8::1/64") into inet type columns.
+
+ActiveRecord itself supports PostgreSQL inet type since Rails 4, but it maps to ruby built-in IPAddr class which does not support CIDR notation by default.
+This gem enables it by tweaking IPAddr class.
+
 
 ## Installation
 
@@ -20,17 +36,32 @@ Or install it yourself as:
 
     $ gem install ext_ipaddr
 
+
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require 'ext_ipaddr'
 
-## Development
+IPAddr.new('192.0.2.1/24')
+# => #<IPAddr: IPv4:192.0.2.1/255.255.255.0>
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+IPAddr.new('2001:db8::1/64')
+# => #<IPAddr: IPv6:2001:0db8:0000:0000:0000:0000:0000:0001/ffff:ffff:ffff:ffff:0000:0000:0000:0000>
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+IPAddr.new('2001:db8::1/64').to_cidr_s
+# => "2001:db8::1/64"
+
+IPAddr.new('2001:db8::1/64').prefix_length
+# => 64
+
+IPAddr.new('192.0.2.1/24') == IPAddr.new('192.0.2.1/24')
+# => true
+
+IPAddr.new('192.0.2.1/24') == IPAddr.new('192.0.2.1/32')
+# => false
+```
+
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/ext_ipaddr.
-
+Bug reports and pull requests are welcome on GitHub at https://github.com/s2ugimot/ext_ipaddr
