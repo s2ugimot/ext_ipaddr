@@ -1,5 +1,7 @@
 # ExtIPAddr
 
+[![Build Status](https://travis-ci.org/s2ugimot/ext_ipaddr.svg?branch=master)](https://travis-ci.org/s2ugimot/ext_ipaddr)
+
 Monkey patch for ruby built-in IPAddr class to make it support CIDR notation.
 
 ```ruby
